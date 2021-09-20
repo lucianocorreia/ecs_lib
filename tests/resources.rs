@@ -7,9 +7,8 @@ fn create_and_get_reource_immutably() {
     let mut world = World::new();
 
     world.add_resource(FpsResource(60));
-    if let Some(fps) = world.get_resource::<FpsResource>() {
-        assert_eq!(*fps.0, 60);
-    }
+    let fps = world.get_resource::<FpsResource>().unwrap();
+    assert_eq!(fps.0, 60);
 }
 
 struct FpsResource(pub u32);
